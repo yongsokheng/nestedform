@@ -1,0 +1,13 @@
+<%= nested_form_for @group do |f| %>
+  <%= render "shared/errors", object: @group %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <%= f.fields_for :users do |ff| %>
+    <%= ff.text_field :name %>
+  <%= ff.link_to_remove "Remove this task" %>
+  <% end %>
+  <p><%= f.link_to_add "Add a task", :users %></p>
+  <%= f.submit "Save" %>
+<% end %>
